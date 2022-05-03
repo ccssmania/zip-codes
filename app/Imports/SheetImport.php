@@ -14,9 +14,10 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 
-class SheetImport implements ToModel, WithHeadingRow
+class SheetImport implements ToModel, WithHeadingRow, WithChunkReading
 {
     use Importable, SkipsFailures;
 
@@ -27,7 +28,6 @@ class SheetImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        dd($row);
         $settlementTypeName = $row['d_tipo_asenta'];
         $settlementType = SettlementType::firstOrCreate(
             ['name' => $settlementTypeName]
@@ -69,5 +69,10 @@ class SheetImport implements ToModel, WithHeadingRow
 
         return $zipCodeModel;
 
+    }
+
+    public function chunkSize(): int
+    {
+        return 500;
     }
 }

@@ -15,5 +15,5 @@ use App\Http\Controllers\ZipCodeController;
 */
 
 Route::get('/import-codes', [ZipCodeController::class, 'import'])->middleware('validate-import')->name('zipcode.import.index');
-Route::post('/import-codes', [ZipCodeController::class, 'store'])->name('zipcode.import');
+Route::post('/import-codes', [ZipCodeController::class, 'store'])->middleware('validate-import')->name('zipcode.import');
 Route::get('/zip-exists', [ZipCodeController::class, 'exists'])->name('zip-exists');
