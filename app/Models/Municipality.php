@@ -16,11 +16,4 @@ class Municipality extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    /**
-     * getter to convert name to uppercase
-     */
-    public function getNameAttribute()
-    {
-        return strtoupper($this->name);
-    }
 }

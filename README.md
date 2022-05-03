@@ -8,12 +8,15 @@ Clone the repo
 ```
 git clone https://github.com/ccssmania/zip-codes
 cd zip-codes
+cp .env.example .env
 ```
+Organize the databes values
 
 run
 ```
 composer install
 npm install
+php artisan migrate
 ```
 
 First you need to import the zip-code go to the route

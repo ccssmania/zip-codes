@@ -13,13 +13,6 @@ class Settlement extends Model
 
     public $timestamps = false;
 
-    /**
-     * getter to convert name to uppercase
-     */
-    public function getNameAttribute()
-    {
-        return strtoupper($this->name);
-    }
 
     /**
      * get settlement type

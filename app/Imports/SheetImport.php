@@ -27,6 +27,7 @@ class SheetImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        dd($row);
         $settlementTypeName = $row['d_tipo_asenta'];
         $settlementType = SettlementType::firstOrCreate(
             ['name' => $settlementTypeName]

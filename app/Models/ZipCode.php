@@ -26,13 +26,6 @@ class ZipCode extends Model
         return $this->belongsToMany('App\Models\Settlement');
     }
 
-    /**
-     * getter to convert name to uppercase
-     */
-    public function getLocalityAttribute()
-    {
-        return strtoupper($this->locality);
-    }
 
     /**
      * get federal entity related
