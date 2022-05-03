@@ -26,6 +26,7 @@ class ZipCodeController extends Controller
     public function store(Request $request)
     {
         set_time_limit(-1);
+        ini_set('memory_limit', '-1');
         $import = new ZipCodesImport();
         $import->import(request()->file('file'));
 
