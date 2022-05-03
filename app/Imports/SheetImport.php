@@ -27,7 +27,6 @@ class SheetImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        dd($row);
         $settlementTypeName = $row['d_tipo_asenta'];
         $settlementType = SettlementType::firstOrCreate(
             ['name' => $settlementTypeName]
@@ -49,8 +48,8 @@ class SheetImport implements ToModel, WithHeadingRow
             $zipCodeModel->locality = isset($row['d_ciudad']) ? $row['d_ciudad'] : null;
             $federalEntityId = $row['c_estado'];
             $federalEntity = FederalEntity::firstOrCreate(
-                ['id' => $federalEntityId],
-                ['name' => $row['d_estado'], 'code' => isset($row['c_CP']) ? $row['c_CP'] : null]
+                ['id' => $federalEntityId, 'name' => $row['d_estado']],
+                ['code' => isset($row['c_CP']) ? $row['c_CP'] : null]
             );
             $zipCodeModel->federal_entity_id = $federalEntityId;
             $municipalityId = $row['c_mnpio'];
