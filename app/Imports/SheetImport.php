@@ -9,6 +9,7 @@ use App\Models\Settlement;
 use App\Models\SettlementType;
 use App\Models\ZipCode;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -17,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 
-class SheetImport implements ToModel, WithHeadingRow, WithChunkReading
+class SheetImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue
 {
     use Importable, SkipsFailures;
 
@@ -73,6 +74,6 @@ class SheetImport implements ToModel, WithHeadingRow, WithChunkReading
 
     public function chunkSize(): int
     {
-        return 500;
+        return 50;
     }
 }
