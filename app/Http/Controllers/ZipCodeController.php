@@ -33,4 +33,12 @@ class ZipCodeController extends Controller
 
         return redirect()->route('zipcode.import.index');
     }
+
+    /**
+     * return a view showing that import was already made
+     */
+    public function exists()
+    {
+        return view('imports.exists');
+    }
 }
