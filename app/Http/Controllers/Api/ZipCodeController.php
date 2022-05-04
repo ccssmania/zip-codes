@@ -33,7 +33,7 @@ class ZipCodeController extends Controller
 
         $municipality = [
             'key' => $zipCode->municipality->id,
-            'name' => $zipCode->municipality->name,
+            'name' => utf8_encode($zipCode->municipality->name),
         ];
         $payload = [
             'zip_code' => $zipCode->id,
@@ -43,6 +43,7 @@ class ZipCodeController extends Controller
             'municipality' => $municipality
 
         ];
-        return response($payload);
+        
+        return response()->json($payload, 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
